@@ -16,7 +16,6 @@ RUN sudo curl -fsSL "${GOLANG_DOWNLOAD_URL}" -o golang.tar.gz && \
 	sudo tar -C /usr/local -xzf golang.tar.gz && \
 	sudo rm golang.tar.gz
 
-RUN sed -i '$ d' /home/user/.bashrc
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
