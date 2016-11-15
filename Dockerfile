@@ -16,10 +16,13 @@ RUN sudo curl -fsSL "${GOLANG_DOWNLOAD_URL}" -o golang.tar.gz && \
 	sudo tar -C /usr/local -xzf golang.tar.gz && \
 	sudo rm golang.tar.gz
 
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+RUN sudo mkdir -p /go/{bin,pkg,src} && \
+	sudo chmod -R 777 /go && \
+	sudo mkdir -p /projects/{bin,pkg,src} && \
+	sudo chmod -R 777 /projects
 
-RUN sudo mkdir -p "$GOPATH/src" "$GOPATH/bin" && sudo chmod -R 777 "$GOPATH"
+ENV PATH ${GOPATH//://bin:}/bin:/usr/local/go/bin:$PATH
+ENV CHE_PROJECTS_ROOT=/projects/src
 
 EXPOSE 8080
 
