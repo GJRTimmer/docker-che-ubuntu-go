@@ -16,9 +16,9 @@ RUN sudo curl -fsSL "${GOLANG_DOWNLOAD_URL}" -o golang.tar.gz && \
 	sudo tar -C /usr/local -xzf golang.tar.gz && \
 	sudo rm golang.tar.gz
 
-RUN sudo mkdir -p /go/{bin,pkg,src} && \
+RUN sudo mkdir -p /go/bin /go/pkg /go/src && \
 	sudo chmod -R 777 /go && \
-	sudo mkdir -p /projects/{bin,pkg,src} && \
+	sudo mkdir -p /projects/bin /projects/pkg /projects/src && \
 	sudo chmod -R 777 /projects
 
 ENV PATH /projects/bin:/go/bin:/usr/local/go/bin:$PATH
