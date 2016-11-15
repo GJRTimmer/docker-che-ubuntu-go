@@ -21,7 +21,7 @@ RUN sudo mkdir -p /go/{bin,pkg,src} && \
 	sudo mkdir -p /projects/{bin,pkg,src} && \
 	sudo chmod -R 777 /projects
 
-ENV PATH ${GOPATH//://bin:}/bin:/usr/local/go/bin:$PATH
+ENV PATH /projects/bin:/go/bin:/usr/local/go/bin:$PATH
 ENV CHE_PROJECTS_ROOT=/projects/src
 
 EXPOSE 8080
